@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/cardGame/scripts/jquery-3.4.1.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style>
+	button {
+	  background-color: #4CAF50; /* Green */
+	  border: none;
+	  color: white;
+	  padding: 15px 200px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	}
+</style>
+</head>
+<body>
+	<h1 id = "home">Card Game</h1>
+	<hr width="100%" color="black">
+	<div class="container">
+	<h1 class="text-primary">회원탈퇴</h1>
+	<div class="form-group">
+		ID : <input type="text" id="memberId" class="form-control">
+	</div>
+	<div class="form-group">
+		PW : <input type="password" id="memberPw" class="form-control">
+	</div>
+	<div class="form-group">
+		PW확인  : <input type="password"  id="memberPw2" class="form-control">
+	</div>
+	<button id="fireBtn">탈퇴</button>
+	</div>
+</body>
+<script>
+	$(document).ready(function(){
+		// cardGame클릭시(index화면으로 가기)
+		$("#home").click(function(){
+			location.href = "/cardGame/index.html"
+		});
+		$.ajax({
+			url : "/cardGame/GetSessionInfo",
+			method: "post",
+			async : false, //동기요청 : 값을 받을때까지 기다리고 success가 실행된다
+			success: function(json){
+				loginState = json;
+				console.log("loginState="+loginState);
+				$("#memberId").val(loginState)
+				$("#memberId").attr("readonly", true)
+			}
+		});
+		// 탈퇴버튼 누르면
+		$("#fireBtn").click(function(){
+			if($("#memberPw").val() === $("#memberPw2").val()) {
+			$.ajax({
+				url : "/cardGame/FireServlet",
+				method : "post",
+				data : {"memberId" : $('#memberId').val(), "memberPw" : $('#memberPw').val() },
+				success : function(json) {
+					// 탈퇴가 성공적으로 되면 index화면으로 넘어간다
+					if (json === 1) {
+						$.ajax({
+							url : "/cardGame/Logout",
+							method : "post",
+							success : function(){
+								location.href = "/cardGame/index.html"	
+							}
+						});
+					} else {
+						alert("아이디와 비밀번호가 맞지 않습니다.")
+					}
+				}
+			});
+			}
+			else {
+				alert("비밀번호를 다시 확인해 주세요.")
+			}
+		});
+	});
+</script>
+</html>

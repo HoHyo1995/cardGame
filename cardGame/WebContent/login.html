@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/cardGame/scripts/jquery-3.4.1.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style>
+	button {
+	  background-color: #4CAF50; /* Green */
+	  border: none;
+	  color: white;
+	  padding: 15px 200px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	}
+</style>
+</head>
+<body>
+	<h1 id = "home">Card Game</h1>
+	<hr width="100%" color="black">
+<div class="container">
+	<h1 class="text-primary">login</h1>	
+	<table class="table">
+		<!-- 로그인을 위한 아이디와 비밀번호를 입력 받는다 -->
+		<tr>
+			<td>ID</td>
+			<td><input type="text" id ="memberId"></td>
+		</tr>
+		<tr>
+			<td>PW</td>
+			<td><input type="password" id ="memberPw"></td>
+		</tr>
+	</table>
+	<span>
+	<button id="loginBtn">로그인</button>
+	</span>
+	<span>
+	<button id="signUp">회원가입</button> <!--  click : location.href -->
+	</span>
+</div>
+</body>
+	<script>
+	$(document).ready(function(){
+		// cardGame클릭시(index화면으로 가기)
+		$("#home").click(function(){
+			location.href = "/cardGame/index.html"
+		});
+	// 로그인 버튼
+		$("#loginBtn").click(function(){
+			$.ajax({
+				url : "/cardGame/Login",
+				method : "post",
+				data : {"memberId" : $('#memberId').val(), "memberPw" : $('#memberPw').val() },
+				success : function(){
+					location.href = "/cardGame/index.html"
+				}
+			});
+		});
+	// 회원가입 버튼 
+	$("#signUp").click(function(){
+		location.href = "/cardGame/signUp.html"
+	});
+});	
+	</script>
+</html>

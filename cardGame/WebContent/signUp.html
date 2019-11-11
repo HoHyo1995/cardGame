@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/cardGame/scripts/jquery-3.4.1.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style>
+	button {
+	  background-color: #4CAF50; /* Green */
+	  border: none;
+	  color: white;
+	  padding: 15px 200px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	}
+</style>
+</head>
+<body>
+	<h1 id = "home">Card Game</h1>
+	<hr width="100%" color="black">
+	<div class="container">
+	<h1 class="text-primary">sign up</h1>
+	<!-- 회원가입을 위한 id,pw,pw확인이 필요 -->
+	<div class="form-group">
+		<label>memberId : </label><input type="text"id="memberId" class="form-control">
+	</div>
+	<div class="form-group">
+		<label>memberPw : </label><input type="password"id="memberPw" class="form-control">
+	</div>
+	<div class="form-group">
+		<label>memberPw2 : </label><input type="password"id="memberPw2" class="form-control">
+	</div>
+	<button id="joinBtn">회원가입</button>
+	</div>
+</body>
+<script>
+	$(document).ready(function(){
+		// cardGame클릭시(index화면으로 가기)
+		$("#home").click(function(){
+			location.href = "/cardGame/index.html"
+		});
+		// 회원가입 버튼
+		$("#joinBtn").click(function(){
+			// 처음비밀번호와 뒤의 비밀번호가 같은지 확인하여 같으면 서블릿으로 넘어가고 다르면 비밀번호가 다르다고 뜹니다.
+			if($("#memberPw").val() === $("#memberPw2").val()){
+			$.ajax({
+				url : "/cardGame/JoinMembership",
+				method : "post",
+				data : {"memberId" : $("#memberId").val(), "memberPw" : $("#memberPw").val()},
+				success: function(json) {
+					location.href = "/cardGame/login.html"
+				}
+			});
+			
+		} else{
+			alert("비밀번호가 서로 다릅니다.");
+		}
+	});		
+});	
+</script>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/cardGame/scripts/jquery-3.4.1.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style>
+	button {
+	  background-color: #4CAF50; /* Green */
+	  border: none;
+	  color: white;
+	  padding: 15px 200px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	}
+</style>
+</head>
+<body>
+	<h1 id = "home">Card Game</h1>
+	<hr width="100%" color="black">
+	<div class="container">
+	<h1 class="text-primary">비밀번호 변경</h1>
+	<!-- 비밀번호 변경을 위해서는 아이디와 원래의 비밀번호 그리고 바꿀 비밀번호가 필요하다 -->
+	<div class="form-group">
+		ID : <input type="text" id="memberId" class="form-control">
+	</div>
+	<div class="form-group">
+		PW : <input type="password" id="memberPw" class="form-control">
+	</div>
+	<div class="form-group">
+		새로운 PW : <input type="password" id="newMemberPw" class="form-control">
+	</div>
+	<div class="form-group">
+		확인 PW : <input type="password" id="newMemberPw2" class="form-control">
+	</div>
+	<div>
+		<button id= "changeBtn">변경</button>
+	</div>
+	</div>
+</body>
+<script>
+$(document).ready(function(){
+	// cardGame클릭시(index화면으로 가기)
+	$("#home").click(function(){
+		location.href = "/cardGame/index.html"
+	});
+	// 로그인된 아이디의 아이디를 받아오기 위해서
+	$.ajax({
+		url : "/cardGame/GetSessionInfo",
+		method: "post",
+		async : false, //동기요청 : 값을 받을때까지 기다리고 success가 실행된다
+		success: function(json){
+			loginState = json;
+			console.log("loginState="+loginState);
+			$("#memberId").val(loginState)
+			$("#memberId").attr("readonly", true)
+		}
+	});
+	$("#changeBtn").click(function(){
+		let successNum = 0;
+		// 처음 바꿀비밀번호를 두번입력하는데 같은지 확인한다 
+		if($("#newMemberPw").val() != $("#newMemberPw2").val()) {
+				alert("새로 변경 할 비밀번호가 서로 틀립니다.")
+			}else if($("#newMemberPw").val() == $("#newMemberPw2").val()) {
+		$.ajax({
+			url : "/cardGame/passwordChange",
+			method : "post",
+			data : {"memberId" : $('#memberId').val(), "memberPw" : $('#memberPw').val(), "newMemberPw" : $('#newMemberPw').val()},
+			success : function(json){
+				successNum = json;
+				// successNum은 비밀번호가 성곡적으로 변경되었을때 1을 리턴해준다.
+				if(successNum === 1){
+					$.ajax({
+						url : "/cardGame/Logout",
+						method : "post",
+						success : function(){
+							location.href = "/cardGame/index.html"	
+						}
+					});
+				} else {
+					alert("아이디와 비밀번호가 맞지 않습니다.")
+					}
+				}
+			});
+	}
+	});
+});
+</script>
+</html>
