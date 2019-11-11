@@ -1,0 +1,9 @@
+	table, td {
+		border: 1px solid gray;
+	}
+	table {
+		border-collapse: collapse;
+	}
+	.successPic {
+		opacity : 1;
+	}
