@@ -33,18 +33,20 @@
 	$(document).ready(function(){
 	//-------------------------------------------
 	// 힌트버튼 선택된거는 보여지고 사라지면 안되니까 succesPic이라는 클래스로 바꿔줌
-	let hintCount = 0;
+	let hintCount = 1;
 	$("#hint").click(function(){
-		if( $(".pic").not(".successPic").css({opacity:"1"}) ){
-			$(".pic").animate({opacity:0.1}, 300);
-		}
-		// (힌트는 총 두번 hintCount가 0 or 1 가능)
-		if(hintCount <2) {
-			console.log("hintCount", hintCount);
-			$(".pic").each(function(){
-				$(this).animate({opacity:0.1}, 5000);
-			});
+		// (힌트는 총 두번 hintCount가 1 or 2 가능)
+		console.log("hintCount", hintCount);
+		if(hintCount == 1|| hintCount == 2) {
+			if($(".pic").not(".successPic")){
+				console.log("couu");
+				$(".pic").animate({opacity:1});
+				$(".pic").animate({opacity:0.01}, 3000);
+			}
+		} 
 		hintCount += 1;
+		if(hintCount == 3){
+			$("#hint").hide();
 		}
 	});
 	//-------------------------
@@ -110,7 +112,7 @@
 		
 		// 이미지 안보이게하기
 		$(".pic").each(function(){
-			$(this).animate({opacity:0.1}, 3000); // 드래그 버그 -> 우클릭방지해야 함
+			$(this).animate({opacity:0.01}, 3000); // 드래그 버그 -> 우클릭방지해야 함
 		});
 
 		// 게임 변수 설정
@@ -175,7 +177,7 @@
 		                           }
 		                        });
 		                      $(".pic").each(function(){
-		                        $(this).animate({opacity:0.1}, 3000); // 이슈 : 드래그 버그 -> 우클릭 방지로 방지
+		                        $(this).animate({opacity:0.01}, 3000); // 이슈 : 드래그 버그 -> 우클릭 방지로 방지
 		                        });
 						} else{
 							clearInterval(timer);
@@ -187,9 +189,9 @@
 							});
 						}
 					}
-				} else {
-					$(onePic).animate({"opacity":0.1},1);
-					$(twoPic).animate({"opacity":0.1},1);
+				} else { // 그림 두개가 틀릴 시
+					$(onePic).animate({"opacity":0.01},1);
+					$(twoPic).animate({"opacity":0.01},1);
 					$(onePic).attr("disabled",false);
 					$(twoPic).attr("disabled",false);
 				}
