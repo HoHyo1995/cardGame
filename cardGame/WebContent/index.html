@@ -3,6 +3,17 @@
 <head>
 <!-- css -->
 <link rel="stylesheet" href="/cardGame/css/index.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -14,20 +25,20 @@
 	<h1 id = "home">Card Game</h1>
 	<hr width="100%" color="black">
 	<div class="container">
-	<button id="toptenBtn">Top 10</button>
-	<button id="todayToptenBtn">오늘의 Top 10</button>
-	<button id="monthTopTenBtn">이달의 Top 10</button>
+	<button class="btn btn-success" id="toptenBtn">Top 10</button>
+	<button class="btn btn-success" id="todayToptenBtn">오늘의 Top 10</button>
+	<button class="btn btn-success" id="monthTopTenBtn">이달의 Top 10</button>
 	<!-- 로그인 전 -->
-	<button id="loginBtn">로그인</button>
+	<button class="btn btn-success" id="loginBtn">로그인</button>
 	<!-- 로그인 후 -->
-	<button id="gameStart">게임시작</button>
-	<button id=logoutBtn>로그아웃</button>
-	<button id="myScoreBtn">my report list</button> <!-- 자신의 점수 보여주는 것 -->
-	<button id="pwChangeBtn">비밀번호 수정</button>
-	<button id="fireBtn">회원탈퇴</button>
+	<button class="btn btn-primary" id="gameStart">게임시작</button>
+	<button class="btn btn-success" id=logoutBtn>로그아웃</button>
+	<button class="btn btn-success" id="myScoreBtn">my report list</button> <!-- 자신의 점수 보여주는 것 -->
+	<button class="btn btn-success" id="pwChangeBtn">비밀번호 수정</button>
+	<button class="btn btn-success" id="fireBtn">회원탈퇴</button>
 	<!-- my report List -->
 	<h1><span id="memberId"></span><span id="ht"></span></h1>
-	<table id="print">
+	<table class="table table-bordered" id="print">
 	</table>
 	</div>
 </body>
