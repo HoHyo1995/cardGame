@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- css -->
+<link rel="stylesheet" href="/cardGame/css/index.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="/cardGame/scripts/jquery-3.4.1.min.js"></script>
@@ -15,35 +17,23 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style>
-	button {
-	  background-color: #4CAF50; /* Green */
-	  border: none;
-	  color: white;
-	  padding: 15px 200px;
-	  text-align: center;
-	  text-decoration: none;
-	  display: inline-block;
-	  font-size: 16px;
-	}
-</style>
 </head>
 <body>
 	<h1 id = "home">Card Game</h1>
 	<hr width="100%" color="black">
 	<div class="container">
-	<h1 class="text-primary">sign up</h1>
+	<h1 class="text-primary">회원가입</h1>
 	<!-- 회원가입을 위한 id,pw,pw확인이 필요 -->
 	<div class="form-group">
-		<label>memberId : </label><input type="text"id="memberId" class="form-control">
+		<label class="py-1 m-0">memberId : </label><input type="text"id="memberId" class="form-control" style="width: 30%">
 	</div>
 	<div class="form-group">
-		<label>memberPw : </label><input type="password"id="memberPw" class="form-control">
+		<label class="py-1 m-0">memberPw : </label><input type="password"id="memberPw" class="form-control" style="width: 30%">
 	</div>
 	<div class="form-group">
-		<label>memberPw2 : </label><input type="password"id="memberPw2" class="form-control">
+		<label class="py-1 m-0">memberPw2 : </label><input type="password"id="memberPw2" class="form-control" style="width: 30%">
 	</div>
-	<button id="joinBtn">회원가입</button>
+	<button id="joinBtn" class="btn btn-outline-primary btn-sm px-4">회원가입</button>
 	</div>
 </body>
 <script>

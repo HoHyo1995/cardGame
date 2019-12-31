@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- css -->
+<link rel="stylesheet" href="/cardGame/css/index.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="/cardGame/scripts/jquery-3.4.1.min.js"></script>
@@ -15,40 +17,28 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style>
-	button {
-	  background-color: #4CAF50; /* Green */
-	  border: none;
-	  color: white;
-	  padding: 15px 200px;
-	  text-align: center;
-	  text-decoration: none;
-	  display: inline-block;
-	  font-size: 16px;
-	}
-</style>
 </head>
 <body>
 	<h1 id = "home">Card Game</h1>
 	<hr width="100%" color="black">
 <div class="container">
-	<h1 class="text-primary">login</h1>	
-	<table class="table">
+	<h1 class="text-primary">Login</h1>	
+	<table class="table table-borderless">
 		<!-- 로그인을 위한 아이디와 비밀번호를 입력 받는다 -->
 		<tr>
 			<td>ID</td>
-			<td><input type="text" id ="memberId"></td>
+			<td><input type="text" id ="memberId" class="form-control form-control-sm" style="width: 30%"></td>
 		</tr>
 		<tr>
 			<td>PW</td>
-			<td><input type="password" id ="memberPw"></td>
+			<td><input type="password" id ="memberPw" class="form-control form-control-sm" style="width: 30%"></td>
 		</tr>
 	</table>
 	<span>
-	<button id="loginBtn">로그인</button>
+	<button id="loginBtn" class="btn btn-outline-primary">로그인</button>
 	</span>
 	<span>
-	<button id="signUp">회원가입</button> <!--  click : location.href -->
+	<button id="signUp" class="btn btn-outline-primary">회원가입</button> <!--  click : location.href -->
 	</span>
 </div>
 </body>

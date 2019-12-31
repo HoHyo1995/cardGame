@@ -24,28 +24,28 @@ CREATE TABLE IF NOT EXISTS `member` (
   PRIMARY KEY (`member_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 puzzle.member:~4 rows (대략적) 내보내기
+-- 테이블 데이터 puzzle.member:~3 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
 INSERT INTO `member` (`member_id`, `member_pw`, `member_level`) VALUES
-	('1', '2', 'Y'),
+	('1', '1', 'Y'),
 	('kim', 'q1', 'Y'),
 	('park', 'dqwd1', 'Y'),
 	('shin', 'q2', 'Y');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 
--- 테이블 puzzle.report 구조 내보내기
-CREATE TABLE IF NOT EXISTS `report` (
+-- 테이블 puzzle.puzzle_report 구조 내보내기
+CREATE TABLE IF NOT EXISTS `puzzle_report` (
   `report_id` int(11) NOT NULL AUTO_INCREMENT,
   `member_id` varchar(500) DEFAULT NULL,
   `report_date` datetime DEFAULT NULL,
   `count` int(11) DEFAULT NULL,
   `timer` int(11) DEFAULT NULL,
   PRIMARY KEY (`report_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 puzzle.report:~23 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `report` DISABLE KEYS */;
-INSERT INTO `report` (`report_id`, `member_id`, `report_date`, `count`, `timer`) VALUES
+-- 테이블 데이터 puzzle.puzzle_report:~23 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `puzzle_report` DISABLE KEYS */;
+INSERT INTO `puzzle_report` (`report_id`, `member_id`, `report_date`, `count`, `timer`) VALUES
 	(1, '1', '2019-10-18 10:01:06', 15, 36),
 	(2, '1', '2019-10-16 16:41:45', 8, 19),
 	(3, '1', '2019-10-18 10:02:27', 16, 36),
@@ -68,8 +68,9 @@ INSERT INTO `report` (`report_id`, `member_id`, `report_date`, `count`, `timer`)
 	(21, 'shin', '2019-11-11 17:53:55', 553, 3001),
 	(22, 'kim', '2019-11-11 17:54:09', 324, 1576),
 	(23, 'kim', '2019-11-11 17:54:17', 343, 1633),
-	(24, 'kim', '2019-11-11 17:54:26', 243, 1219);
-/*!40000 ALTER TABLE `report` ENABLE KEYS */;
+	(24, 'kim', '2019-11-11 17:54:26', 243, 1219),
+	(25, '1', '2019-12-30 13:57:40', 172, 127);
+/*!40000 ALTER TABLE `puzzle_report` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

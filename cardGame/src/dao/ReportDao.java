@@ -21,7 +21,7 @@ public class ReportDao {
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
 			// 쿼리문 스트링 타입으로 저장
-			String sql = "SELECT member_id, timer, COUNT, report_date FROM report WHERE month(report_date)= month(NOW()) ORDER BY timer ASC,COUNT ASC LIMIT 10";
+			String sql = "SELECT member_id, timer, COUNT, report_date FROM puzzle_report WHERE month(report_date)= month(NOW()) ORDER BY timer ASC,COUNT ASC LIMIT 10";
 			try {
 				stmt = conn.prepareStatement(sql);
 				rs = stmt.executeQuery();
@@ -50,7 +50,7 @@ public class ReportDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		// 쿼리문 스트링 타입으로 저장
-		String sql = "SELECT member_id, timer, COUNT, report_date FROM report WHERE day(report_date)= DAY(NOW()) ORDER BY timer ASC,COUNT ASC LIMIT 10";
+		String sql = "SELECT member_id, timer, COUNT, report_date FROM puzzle_report WHERE day(report_date)= DAY(NOW()) ORDER BY timer ASC,COUNT ASC LIMIT 10";
 		try {
 			stmt = conn.prepareStatement(sql);
 			rs = stmt.executeQuery();
@@ -79,7 +79,7 @@ public class ReportDao {
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
 			// 쿼리문 스트링 타입으로 저장
-			String sql = "SELECT member_id, timer, COUNT, report_date FROM report ORDER BY timer ASC,COUNT ASC LIMIT 10";
+			String sql = "SELECT member_id, timer, COUNT, report_date FROM puzzle_report ORDER BY timer ASC,COUNT ASC LIMIT 10";
 			try {
 				stmt = conn.prepareStatement(sql);
 				rs = stmt.executeQuery();
@@ -109,7 +109,7 @@ public class ReportDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		// 쿼리문 스트링 타입으로 저장
-		String sql = "SELECT member_id, timer, COUNT, report_date FROM report WHERE member_id=? ORDER BY timer ASC,COUNT asc";
+		String sql = "SELECT member_id, timer, COUNT, report_date FROM puzzle_report WHERE member_id=? ORDER BY timer ASC,COUNT asc";
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, report.getMember().getMemberId());
@@ -134,7 +134,7 @@ public class ReportDao {
 		System.out.println("dao");
 		System.out.println("member_id"+report.getMember().getMemberId()+"COUNT"+report.getCount()+"timer"+report.getTimer());
 		PreparedStatement stmt = null;
-		String sql = "INSERT INTO report (member_id, report_date, COUNT, timer) VALUES(?,NOW(),?,?)";
+		String sql = "INSERT INTO puzzle_report (member_id, report_date, COUNT, timer) VALUES(?,NOW(),?,?)";
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, report.getMember().getMemberId());

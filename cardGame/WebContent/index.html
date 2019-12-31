@@ -25,21 +25,27 @@
 	<h1 id = "home">Card Game</h1>
 	<hr width="100%" color="black">
 	<div class="container">
-	<button class="btn btn-success" id="toptenBtn">Top 10</button>
-	<button class="btn btn-success" id="todayToptenBtn">오늘의 Top 10</button>
-	<button class="btn btn-success" id="monthTopTenBtn">이달의 Top 10</button>
-	<!-- 로그인 전 -->
-	<button class="btn btn-success" id="loginBtn">로그인</button>
-	<!-- 로그인 후 -->
-	<button class="btn btn-primary" id="gameStart">게임시작</button>
-	<button class="btn btn-success" id=logoutBtn>로그아웃</button>
-	<button class="btn btn-success" id="myScoreBtn">my report list</button> <!-- 자신의 점수 보여주는 것 -->
-	<button class="btn btn-success" id="pwChangeBtn">비밀번호 수정</button>
-	<button class="btn btn-success" id="fireBtn">회원탈퇴</button>
+		<div id="out">
+			<button class="btn btn-outline-primary" id="toptenBtn">Top 10</button>
+			<button class="btn btn-outline-primary" id="todayToptenBtn">오늘의 Top 10</button>
+			<button class="btn btn-outline-primary" id="monthTopTenBtn">이달의 Top 10</button>
+			<!-- 자신의 점수 보여주는 것 -->
+			<button class="btn btn-outline-primary" id="myScoreBtn">my report list</button>
+		</div>
+		<div id="out">
+			<button class="btn btn-outline-primary" id="loginBtn">로그인</button>
+			<button class="btn btn-outline-primary" id=logoutBtn>로그아웃</button>
+			<button class="btn btn-outline-primary" id="pwChangeBtn">비밀번호 수정</button>
+			<button class="btn btn-outline-primary" id="fireBtn">회원탈퇴</button>
+		</div>
+		<div id="out">
+			<button class="btn btn-outline-primary" id="gameStart">게임시작</button>
+		</div>
 	<!-- my report List -->
 	<h1><span id="memberId"></span><span id="ht"></span></h1>
 	<table class="table table-bordered" id="print">
 	</table>
+	<p id="infoComment" style="font-size:3vw"></p>
 	</div>
 </body>
 </html>

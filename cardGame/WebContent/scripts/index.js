@@ -56,6 +56,7 @@
 			$("#memberId").text(loginState)
 			$("#ht").text("님의 점수 리스트")
 			$("#print").empty()
+			$("#infoComment").empty()
 			$("#print").append("<tr><td>순위</td><td>아이디</td><td>시간</td><td>카운트</td><td>날짜</td></tr>")
 			$.ajax({
 				url : "/cardGame/MyRecord",
@@ -86,6 +87,8 @@
 			var countNum;
 			$("#ht").text("TOP10")
 			$("#print").empty()
+			$("#infoComment").empty()
+			$("#memberId").empty()
 			$("#print").append("<tr><td>순위</td><td>아이디</td><td>시간</td><td>카운트</td><td>날짜</td></tr>")
 			$.ajax({
 				url : "/cardGame/Top",
@@ -116,28 +119,34 @@
 			var countNum;
 			$("#ht").text("오늘의 TOP10")
 			$("#print").empty()
-			$("#print").append("<tr><td>순위</td><td>아이디</td><td>시간</td><td>카운트</td><td>날짜</td></tr>")
+			$("#infoComment").empty()
+			$("#memberId").empty()
 			$.ajax({
 				url : "/cardGame/TodayTop",
 				method : "post",
 				success : function(json) {
 					// json의 크기와 같게한다
-					countNum = new Array(json.length);
-					console.log("순위크기"+countNum.length);
-					for(var i = 0; i<countNum.length; i++) {
-						countNum[i] = i+1;
+					if(json == ""){
+						$("#infoComment").append("순위권에 해당되는 사람이 없습니다.<br>한번 도전 해보세요!!");
+					}else{
+						$("#print").append("<tr><td>순위</td><td>아이디</td><td>시간</td><td>카운트</td><td>날짜</td></tr>")
+						countNum = new Array(json.length);
+						console.log("순위크기"+countNum.length);
+						for(var i = 0; i<countNum.length; i++) {
+							countNum[i] = i+1;
+						}
+						$(json).each(function(index, item){
+							let html = 	"<tr><td>"+countNum[index];
+								html += "</td><td>"+item.member.memberId;
+								html += "</td><td>"+item.timer;
+								html += "</td><td>"+item.count;
+								html += "</td><td>"+item.reportDate;
+								html += "</td></tr>";
+								$("#print").append(html);
+						});	
 					}
-					$(json).each(function(index, item){
-						let html = 	"<tr><td>"+countNum[index];
-							html += "</td><td>"+item.member.memberId;
-							html += "</td><td>"+item.timer;
-							html += "</td><td>"+item.count;
-							html += "</td><td>"+item.reportDate;
-							html += "</td></tr>";
-							$("#print").append(html);
-					});
-					}
-				});
+				}
+			});
 		});
 		// 이달의 top10 클릭
 		$("#monthTopTenBtn").click(function(){
@@ -145,6 +154,8 @@
 			var countNum;
 			$("#ht").text("이달의 TOP10")
 			$("#print").empty()
+			$("#memberId").empty()
+			$("#infoComment").empty()
 			$("#print").append("<tr><td>순위</td><td>아이디</td><td>시간</td><td>카운트</td><td>날짜</td></tr>")
 			$.ajax({
 				url : "/cardGame/MonthTop",
