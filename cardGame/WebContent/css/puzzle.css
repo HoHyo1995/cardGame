@@ -1,9 +1,12 @@
-	table, td {
-		border: 1px solid gray;
+table, td {
+	border: 1px solid gray;
 	}
-	table {
-		border-collapse: collapse;
+table {
+	border-collapse: collapse;
 	}
-	.successPic {
-		opacity : 1;
+.successPic {
+	opacity : 1;
 	}
+body {
+  background: linear-gradient(-135deg, #ffafbd, #ffc3a0) fixed;
+}

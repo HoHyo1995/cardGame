@@ -17,41 +17,36 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style>
-	button {
-	  background-color: #4CAF50; /* Green */
-	  border: none;
-	  color: white;
-	  padding: 15px 200px;
-	  text-align: center;
-	  text-decoration: none;
-	  display: inline-block;
-	  font-size: 16px;
-	}
-</style>
 </head>
 <body>
 	<h1 id = "home">Card Game</h1>
 	<hr width="100%" color="black">
-	<div class="container">
-	<h1 class="text-primary">비밀번호 변경</h1>
-	<!-- 비밀번호 변경을 위해서는 아이디와 원래의 비밀번호 그리고 바꿀 비밀번호가 필요하다 -->
-	<div class="form-group">
-		ID : <input type="text" id="memberId" class="form-control" style="width: 30%">
+<div style="margin-top : 150px;">
+	<h1 class="text-primary" style="text-align: center;">비밀번호변경</h1>
+	<div class="container" style="padding-left: 400px">
+	<!-- 회원가입을 위한 id,pw,pw확인이 필요 -->
+	<table class="table table-borderless" style="width: 50%">
+			<!-- 로그인을 위한 아이디와 비밀번호를 입력 받는다 -->
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" id="memberId" class="form-control" style="width: 80%"></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="password" id="memberPw" class="form-control" style="width: 80%"></td>
+			</tr>
+			<tr>
+				<td>새로운 PW</td>
+				<td><input type="password" id="newMemberPw" class="form-control" style="width: 80%"></td>
+			</tr>
+			<tr>
+				<td>확인 PW</td>
+				<td><input type="password" id="newMemberPw2" class="form-control" style="width: 80%"></td>
+			</tr>
+	</table>
+	<button id= "changeBtn" class="btn btn-outline-primary btn-sm px-4" style="width: 50%">변경</button>
 	</div>
-	<div class="form-group">
-		PW : <input type="password" id="memberPw" class="form-control" style="width: 30%">
-	</div>
-	<div class="form-group">
-		새로운 PW : <input type="password" id="newMemberPw" class="form-control" style="width: 30%">
-	</div>
-	<div class="form-group">
-		확인 PW : <input type="password" id="newMemberPw2" class="form-control" style="width: 30%">
-	</div>
-	<div>
-		<button id= "changeBtn" class="btn btn-outline-primary btn-sm px-4">변경</button>
-	</div>
-	</div>
+</div>
 </body>
 <script>
 $(document).ready(function(){

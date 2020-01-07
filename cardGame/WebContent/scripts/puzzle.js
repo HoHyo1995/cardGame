@@ -79,17 +79,17 @@
 			$("#timer").text(" 경과시간"+timerNum);
 		}, 1000);
 		
-		// 로그 아웃
-		$("#logoutBtn").click(function(){
-			$.ajax({
-				url : "/cardGame/Logout",
-				method : "post",
-				success : function(){
-					console.log("로그아웃");
-					location.href = "/cardGame/puzzle.html"
-				}
-			});
-		});
+//		// 로그 아웃
+//		$("#logoutBtn").click(function(){
+//			$.ajax({
+//				url : "/cardGame/Logout",
+//				method : "post",
+//				success : function(){
+//					console.log("로그아웃");
+//					location.href = "/cardGame/puzzle.html"
+//				}
+//			});
+//		});
 		//---------------------------------------------------------------
 		let total = 0; // 전체 몇번째 클릭인지
 		let stage = 1;

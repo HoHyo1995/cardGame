@@ -21,25 +21,29 @@
 <body>
 	<h1 id = "home">Card Game</h1>
 	<hr width="100%" color="black">
-<div class="container">
-	<h1 class="text-primary">Login</h1>	
-	<table class="table table-borderless">
-		<!-- 로그인을 위한 아이디와 비밀번호를 입력 받는다 -->
-		<tr>
-			<td>ID</td>
-			<td><input type="text" id ="memberId" class="form-control form-control-sm" style="width: 30%"></td>
-		</tr>
-		<tr>
-			<td>PW</td>
-			<td><input type="password" id ="memberPw" class="form-control form-control-sm" style="width: 30%"></td>
-		</tr>
-	</table>
-	<span>
-	<button id="loginBtn" class="btn btn-outline-primary">로그인</button>
-	</span>
-	<span>
-	<button id="signUp" class="btn btn-outline-primary">회원가입</button> <!--  click : location.href -->
-	</span>
+<div style="margin-top : 150px;">	
+		<h1 class="text-primary" style="text-align: center;">Login</h1>	
+		<div class="container" style="padding-left: 400px">
+		<table class="table table-borderless" style="width: 50%">
+			<!-- 로그인을 위한 아이디와 비밀번호를 입력 받는다 -->
+			<tr>
+				<td>ID</td>
+				<td><input type="text" id ="memberId" class="form-control form-control-sm" style="width: 70%" value="park"></td>
+			</tr>
+			<tr>
+				<td>PW</td>
+				<td><input type="password" id ="memberPw" class="form-control form-control-sm" style="width: 70%" value="dqwd1"></td>
+			</tr>
+		</table>
+		<div>
+			<span>
+			<button id="loginBtn" class="btn btn-outline-primary" style="width: 25%">로그인</button>
+			</span>
+			<span>
+			<button id="signUp" class="btn btn-outline-primary" style="width: 25%">회원가입</button> <!--  click : location.href -->
+			</span>
+		</div>
+	</div>
 </div>
 </body>
 	<script>
